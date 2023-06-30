@@ -12,6 +12,8 @@
 </head>
 <body class="text-center">
 	<script>
+		let deck = [{"attack": [3, 4, 5, 5], "defense": ["Barrel Roll - Avoid 2 hits", "Wingman - busy, no help"], "defensive fire": "0 hits"}, {"attack": [3, 3, 4, 5], "defense": ["Evasives - Avoid all damage", "Wingman attacks with 5FP"], "defensive fire": "2 hits"}, {"attack": [4, 4, 5, 6], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"}]
+		shuffle(deck)
 		const experienceLevelEarly = ["Green", "Trained", "Trained", "Trained", "Veteran", "Ace"]
 		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran", "Veteran", "Ace"]
 		let enemyExperience
@@ -22,9 +24,39 @@
 		function generateResult() {
 			let enemy = document.getElementById("enemy-firepower");
 			let player = document.getElementById("player-firepower");
-			let enemyFirepower = enemy.options[enemy.selectedIndex].text;
-			let playerFirepower = player.options[player.selectedIndex].text;
-			return `Enemy hits: ${enemyFirepower}, player hits ${playerFirepower}`
+			let enemyFirepower = enemy.options[enemy.selectedIndex].value;
+			let playerFirepower = player.options[player.selectedIndex].value;
+			let positionValue = document.getElementById("player-position");
+			let position = positionValue.options[player.selectedIndex].value;
+			let playerCard = deck[0]
+			let enemyCard = deck[1]
+			let enemyBonus = 0
+			let playerBonus = 0
+			if (position === "Tailed") {
+				enemyBonus += 1
+			}
+			else if (position === "Tailing") {
+				playerBonus += 1
+			}
+			shuffle(deck)
+			return `Enemy hits: ${enemyCard["attack"][parseInt(enemyFirepower)] + enemyBonus}, player hits ${playerCard["attack"][parseInt(playerFirepower)] + playerBonus}`
+		}
+		function shuffle(array) {
+		  let currentIndex = array.length,  randomIndex;
+
+		  // While there remain elements to shuffle.
+		  while (currentIndex !== 0) {
+
+			// Pick a remaining element.
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
+
+			// And swap it with the current element.
+			[array[currentIndex], array[randomIndex]] = [
+			  array[randomIndex], array[currentIndex]];
+		  }
+
+		  return array;
 		}
 	</script>
 	<h1>Encounter Generator</h1>
@@ -37,15 +69,25 @@
 	<div class="dropdown mt-2">
 		<label for="enemy-firepower">Enemy firepower </label>
 		<select id="enemy-firepower">
-		  <option value="1" selected="selected">1</option>
-		  <option value="2">2</option>
-		  <option value="3">3</option>
+		  <option value="0" selected="selected">2</option>
+		  <option value="1">3</option>
+		  <option value="2">4</option>
+			<option value="3">5</option>
 		</select>
 		<label for="player-firepower">Player firepower </label>
 		<select id="player-firepower">
-		  <option value="1" selected="selected">1</option>
-		  <option value="2">2</option>
-		  <option value="3">3</option>
+		  <option value="0" selected="selected">2</option>
+		  <option value="1">3</option>
+		  <option value="2">4</option>
+			<option value="3">5</option>
+		</select>
+		<label for="player-position">Player Position </label>
+		<select id="player-position">
+		  <option value="Tailing">Tailing</option>
+		  <option value="Advantaged">Advantaged</option>
+		  <option value="Head-On" selected="selected">Head-On</option>
+			<option value="Disadvantaged">Disadvantaged</option>
+			<option value="Being Tailed">Being Tailed</option>
 		</select>
 	</div>
 
