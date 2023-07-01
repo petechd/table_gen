@@ -13,7 +13,19 @@
 <body class="text-center">
 	<script>
 		let round = 1
-		let deck = [{"attack": [3, 4, 5, 5], "defense": ["Barrel Roll - Avoid 2 hits", "Wingman - busy, no help"], "defensive fire": "0 hits"}, {"attack": [3, 3, 4, 5], "defense": ["Evasives - Avoid all damage", "Wingman attacks with 5FP"], "defensive fire": "2 hits"}, {"attack": [4, 4, 5, 6], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"}]
+		let deck = [{"number": 1, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll - Avoid 2 hits", "Wingman - busy, no help"], "defensive fire": "0 hits"},
+			{"number": 3, "attack": [4, 4, 5, 6], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"},
+			{"number": 4, "attack": [4, 4, 5, 5], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "3 hits"},
+			{"number": 8, "attack": [3, 4, 5, 5], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "1 hit"},
+			{"number": 16, "attack": [5, 5, "DE", "DE"], "defense": ["Immelamann - Avoid all damage + improve x2", "Wingman attack with 3 FP"], "defensive fire": "4 hits"},
+			{"number": 18, "attack": [1, 2, 3, 4], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "2 hits"},
+			{"number": 29, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Split S - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"},
+			{"number": 32, "attack": [3, 4, 5, 5], "defense": ["Cuban Eight - Avoid 1 hit and improve x1", "Wingman busy, no help"], "defensive fire": "3 hits"},
+			{"number": 38, "attack": [3, 3, 4, 5], "defense": ["Evasives - Avoid all damage", "Wingman attacks with 5FP"], "defensive fire": "2 hits"},
+			{"number": 49, "attack": [2, 2, 3, 3], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
+			{"number": 50, "attack": [3, 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "2 hits"},
+			{"number": 51, "attack": [3, 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
+		]
 		shuffle(deck)
 		const experienceLevelEarly = ["Green", "Trained", "Trained", "Trained", "Veteran", "Ace"]
 		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran", "Veteran", "Ace"]
@@ -40,19 +52,28 @@
 				playerBonus += 1
 			}
 			shuffle(deck)
-			return `Enemy hits: ${enemyCard["attack"][parseInt(enemyFirepower)] + enemyBonus}, player hits ${playerCard["attack"][parseInt(playerFirepower)] + playerBonus}`
+
+			let enemyHits = ""
+			if (enemyCard["attack"][parseInt(enemyFirepower)] === "DE") {
+				enemyHits = "DE"
+			}
+			else {
+				enemyHits = enemyCard["attack"][parseInt(enemyFirepower)] + enemyBonus
+			}
+			if (playerCard["attack"][parseInt(playerFirepower)] === "DE") {
+				playerHits = "DE"
+			}
+			else {
+				playerHits = playerCard["attack"][parseInt(playerFirepower)] + playerBonus
+			}
+			return `Enemy: Card No: ${enemyCard["number"]}, Hits: ${enemyHits}, Defense: ${enemyCard["defense"][0]},
+					Player: Card No: ${playerCard["number"]}, Hits: ${playerHits}, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
 		}
 		function shuffle(array) {
 		  let currentIndex = array.length,  randomIndex;
-
-		  // While there remain elements to shuffle.
 		  while (currentIndex !== 0) {
-
-			// Pick a remaining element.
 			randomIndex = Math.floor(Math.random() * currentIndex);
 			currentIndex--;
-
-			// And swap it with the current element.
 			[array[currentIndex], array[randomIndex]] = [
 			  array[randomIndex], array[currentIndex]];
 		  }
@@ -79,7 +100,7 @@
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:palegoldenrod'>Port Strut</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:palegoldenrod'>Port Strut</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:white; background-color:lightpink'>Controls</span>",
+				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:white; background-color:goldenrod'>Controls</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:palegoldenrod'>Port Strut</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:lightgray; background-color:black'>Rear Guns</span>",
