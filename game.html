@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Encounter Generator</title>
+	<title>Encounter Rolls</title>
 	<style>
 		body {text-align: center;}
 	</style>
@@ -22,17 +22,17 @@
 			{"number": 29, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Split S - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"},
 			{"number": 32, "attack": [3, 4, 5, 5], "defense": ["Cuban Eight - Avoid 1 hit and improve x1", "Wingman busy, no help"], "defensive fire": "3 hits"},
 			{"number": 38, "attack": [3, 3, 4, 5], "defense": ["Evasives - Avoid all damage", "Wingman attacks with 5FP"], "defensive fire": "2 hits"},
-			{"number": 49, "attack": [2, 2, 3, 3], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
-			{"number": 50, "attack": [3, 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "2 hits"},
+			{"number": 49, "attack": [2, 2, "3+C","3+C"], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
+			{"number": 50, "attack": ["3+C", 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "2 hits"},
 			{"number": 51, "attack": [3, 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
 		]
 		shuffle(deck)
-		const experienceLevelEarly = ["Green", "Trained", "Trained", "Trained", "Veteran", "Ace"]
-		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran", "Veteran", "Ace"]
+		const experienceLevelEarly = ["Green -1 random hit", "Trained", "Trained", "Trained", "Veteran +1 random hit", "Ace +1 random hit, +1 initiative roll"]
+		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran", "Veteran +1 random hit", "Ace +1 random hit, +1 initiative roll"]
 		let enemyExperience
 		function generateExperience(experienceArray) {
 			enemyExperience = experienceArray[Math.floor(Math.random() * experienceArray.length)]
-			return "Experience generated";
+			return `Enemy experience: ${enemyExperience}`;
 		}
 		function generateResult() {
 			let enemy = document.getElementById("enemy-firepower");
@@ -40,9 +40,12 @@
 			let enemyFirepower = enemy.options[enemy.selectedIndex].value;
 			let playerFirepower = player.options[player.selectedIndex].value;
 			let positionValue = document.getElementById("player-position");
-			let position = positionValue.options[player.selectedIndex].value;
+			let position = positionValue.options[positionValue.selectedIndex].value;
+			let rearValue = document.getElementById("rear-gunner");
+			let rear = rearValue.options[rearValue.selectedIndex].value;
 			let playerCard = deck[0]
 			let enemyCard = deck[1]
+			let rearCard = deck[2]
 			let enemyBonus = 0
 			let playerBonus = 0
 			if (position === "Tailed") {
@@ -66,8 +69,30 @@
 			else {
 				playerHits = playerCard["attack"][parseInt(playerFirepower)] + playerBonus
 			}
-			return `Enemy: Card No: ${enemyCard["number"]}, Hits: ${enemyHits}, Defense: ${enemyCard["defense"][0]},
-					Player: Card No: ${playerCard["number"]}, Hits: ${playerHits}, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+
+			let enemyArray = enemyCard["attack"][parseInt(enemyFirepower)].toString().split("+")
+			if (enemyArray.length === 2) {
+				enemyHits = (parseInt(enemyArray[0]) + enemyBonus).toString() + " + C"
+			}
+			let playerArray = playerCard["attack"][parseInt(playerFirepower)].toString().split("+")
+			if (playerArray.length === 2) {
+				playerHits = (parseInt(playerArray[0]) + playerBonus).toString() + " + C"
+			}
+			console.log(position)
+			if (rear === "Yes") {
+				if (position === "Tailing" || position === "Advantaged") {
+				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}, <b>Rear Gunner</b> &#127136; ${rearCard["number"]}, &#9055; <span style="color:red">${rearCard["defensive fire"][0]}</span>
+				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+			}
+				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, &#9055; <span style="color:red">${enemyHits}</span>
+						<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+			}
+			if (position === "Tailing" || position === "Advantaged") {
+				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}
+				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+			}
+			return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, &#9055; <span style="color:red">${enemyHits}</span>
+					<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
 		}
 		function shuffle(array) {
 		  let currentIndex = array.length,  randomIndex;
@@ -132,14 +157,20 @@
 			}
 			return `Hits: ${sentence}.`
 		}
+		function generateBurst() {
+			let possibleResults = ["Target DE (expend 2 ammo)", "+4 hits (expend 2 ammo)", "+3 hits (expend 2 ammo, then 1 weapon jams)", "+2 hits (expend 2 ammo)", "+2 hits (expend 2 ammo, then 1 weapon jams)", "+1 hit (expend 2 ammo)", "+1 hit (expend 2 ammo, then all weapons jams)", "+1 hit (expend 2 ammo, then 1 weapon jams)", "+2 hits (expend 2 ammo)", "+1 hit (expend 2 ammo, then all weapons jams)", "All weapons jam before any damage is done"]
+			shuffle(possibleResults)
+		  return possibleResults[0];
+		}
 	</script>
-	<h1>Encounter Generator</h1>
+	<h1>Encounter Rolls</h1>
+	<h5>Card number &#127136; Hits &#9055;</h5>
 	<button  class="btn btn-primary mt-2" type="button"
-	onclick="document.getElementById('demo').innerHTML = generateExperience(experienceLevelEarly)">
-	Enemy experience Sep 1916 - Dec 1917</button>
+	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelEarly)">
+	Enemy exp. 09.1916 - 12.1917</button>
 	<button  class="btn btn-primary mt-2" type="button"
-	onclick="document.getElementById('demo').innerHTML = generateExperience(experienceLevelLate)">
-	Enemy experience Jan 1918 - Oct 1918</button>
+	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelLate)">
+	Enemy exp. 01.1918 - 10.1918</button>
 	<div class="dropdown mt-2">
 		<label for="enemy-firepower">Enemy firepower </label>
 		<select id="enemy-firepower">
@@ -155,7 +186,7 @@
 		  <option value="2">4</option>
 			<option value="3">5</option>
 		</select>
-		<label for="player-position">Player Position </label>
+		<label for="player-position">Player position </label>
 		<select id="player-position">
 		  <option value="Tailing">Tailing</option>
 		  <option value="Advantaged">Advantaged</option>
@@ -163,9 +194,14 @@
 			<option value="Disadvantaged">Disadvantaged</option>
 			<option value="Being Tailed">Being Tailed</option>
 		</select>
+		<label for="rear-gunner">Enemy Rear Gunner </label>
+		<select id="rear-gunner">
+		  <option value="No" selected="selected">No</option>
+		  <option value="Yes">Yes</option>
+		</select>
 	</div>
 	<div class="dropdown mt-2">
-		<label for="number-of-hits">Number of hits</label>
+		<label for="number-of-hits">Number of hits (used for "Generate hits")</label>
 		<select id="number-of-hits">
 		  <option value="1">1</option>
 		  <option value="2">2</option>
@@ -180,9 +216,12 @@
 	</div>
 
 	<button type="button" id="generate-result" class="btn btn-danger mt-2" onclick="document.getElementById('demo').innerHTML = generateResult(); round++; document.getElementById('generate-result').innerHTML = `Round ${round} generate result`">Round 1 generate result</button>
+	<button type="button" id="generate-burst" class="btn btn-danger mt-2" onclick="document.getElementById('demo4').innerHTML = generateBurst()">Extended burst</button>
 	<button type="button" id="generate-hits" class="btn btn-danger mt-2" onclick="document.getElementById('demo3').innerHTML = generateHits()">Generate hits</button>
+	<p class="mt-2" id="experience"></p>
 	<p id="demo"></p>
 	<p id="demo2"></p>
+	<p id="demo4"></p>
 	<p id="demo3"></p>
 </body>
 </html>
