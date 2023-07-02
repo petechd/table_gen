@@ -13,18 +13,67 @@
 <body class="text-center">
 	<script>
 		let round = 1
-		let deck = [{"number": 1, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll - Avoid 2 hits", "Wingman - busy, no help"], "defensive fire": "0 hits"},
-			{"number": 3, "attack": [4, 4, 5, 6], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"},
-			{"number": 4, "attack": [4, 4, 5, 5], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "3 hits"},
-			{"number": 8, "attack": [3, 4, 5, 5], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "1 hit"},
-			{"number": 16, "attack": [5, 5, "DE", "DE"], "defense": ["Immelamann - Avoid all damage + improve x2", "Wingman attack with 3 FP"], "defensive fire": "4 hits"},
-			{"number": 18, "attack": [1, 2, 3, 4], "defense": ["Tight Turn - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "2 hits"},
-			{"number": 29, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Split S - Improve x1 x2 if rotary engine", "Wingman busy, no help"], "defensive fire": "0 hits"},
-			{"number": 32, "attack": [3, 4, 5, 5], "defense": ["Cuban Eight - Avoid 1 hit and improve x1", "Wingman busy, no help"], "defensive fire": "3 hits"},
-			{"number": 38, "attack": [3, 3, 4, 5], "defense": ["Evasives - Avoid all damage", "Wingman attacks with 5FP"], "defensive fire": "2 hits"},
-			{"number": 49, "attack": [2, 2, "3+C","3+C"], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
-			{"number": 50, "attack": ["3+C", 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "2 hits"},
-			{"number": 51, "attack": [3, 4, 4, 4], "defense": ["Side Loop - Improve x1 x2 if rotary engine", "Wingman improve x1"], "defensive fire": "0 hits"},
+		let deck = [
+			{"number": 1, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 2, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll", "Busy"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 3, "attack": [4, 4, 5, 5], "defense": ["Tight Turn", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 4, "attack": [4, 4, 5, 5], "defense": ["Tight Turn", "Busy"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 5, "attack": [3, 4, 5, 5], "defense": ["Tight Turn", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 6, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll", "Busy"], "defensive fire": "3 hits", "jam": "Yes"},
+			{"number": 7, "attack": [3, 4, 5, 5], "defense": ["Barrel Roll", "Busy"], "defensive fire": "0 hits", "jam": "Yes"},
+			{"number": 8, "attack": [3, 4, 5, 5], "defense": ["Tight Turn", "Busy"], "defensive fire": "1 hit", "jam": "No"},
+			{"number": 9, "attack": [2, 2, "2+C", 3], "defense": ["Barrel Roll", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 10, "attack": [2, 3, 2, 3], "defense": ["Barrel Roll", "Busy"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 11, "attack": ["1+C", 2, 2, 3], "defense": ["Barrel Roll", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 12, "attack": [1, 1, 2, 3], "defense": ["Barrel Roll", "Busy"], "defensive fire": "3 hits", "jam": "Yes"},
+			{"number": 13, "attack": [0, 0, 1, 2], "defense": ["Barrel Roll", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 14, "attack": [2, "2+C", 2, "2+C"], "defense": ["Barrel Roll", "Busy"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 15, "attack": [5, 5, "DE", "DE"], "defense": ["Immelmann", "2 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 16, "attack": [5, 5, "DE", "DE"], "defense": ["Immelmann", "Busy"], "defensive fire": "4 hits", "jam": "No"},
+			{"number": 17, "attack": [2, 2, 3, 3], "defense": ["Tight Turn", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 18, "attack": [1, 2, 3, 4], "defense": ["Tight Turn", "Busy"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 19, "attack": [2, 2, 3, 4], "defense": ["Tight Turn", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 20, "attack": [2, 2, 4, 4], "defense": ["Tight Turn", "Busy"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 21, "attack": [4, 5, 5, 5], "defense": ["Immelmann", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 22, "attack": [4, 5, 5, 5], "defense": ["Immelmann", "Busy"], "defensive fire": "4 hits", "jam": "No"},
+			{"number": 23, "attack": [5, 5, 5, 5], "defense": ["Chandelle", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 24, "attack": [5, 5, "DE", "DE"], "defense": ["Chandelle", "Busy"], "defensive fire": "1 hit", "jam": "No"},
+			{"number": 25, "attack": [3, 4, 5, "4+C"], "defense": ["Half Loop", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 26, "attack": [3, 3, 3, 3], "defense": ["Half Loop", "Busy"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 27, "attack": [4, 4, 5, "DE"], "defense": ["Cuban Eight", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 28, "attack": [4, 5, 5, 5], "defense": ["Cuban Eight", "Busy"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 29, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Split S", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 30, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Split S", "Busy"], "defensive fire": "5 hits", "jam": "No"},
+			{"number": 31, "attack": ["DE", "DE", "DE", "DE"], "defense": ["Cuban Eight", "Busy"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 32, "attack": [3, 4, 5, 5], "defense": ["Cuban Eight", "Busy"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 33, "attack": [3, 4, "5+C", "5+C"], "defense": ["Split S", "4 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 34, "attack": [3, 4, "5+C", "5+C"], "defense": ["Split S", "4 FP Attack"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 35, "attack": [3, 3, 4, 4], "defense": ["Split S", "3 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 36, "attack": [3, 3, 4, "4+C"], "defense": ["Split S", "3 FP Attack"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 37, "attack": [4, 4, 4, "4+C"], "defense": ["Evasive Action", "5 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 38, "attack": [3, 3, 4, 5], "defense": ["Evasive Action", "5 FP Attack"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 39, "attack": [3, 3, 4, 4], "defense": ["Evasive Action", "5 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 40, "attack": [3, 3, 4, 5], "defense": ["Evasive Action", "5 FP Attack"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 41, "attack": [2, 3, 4, 5], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 42, "attack": [2, 3, 4, 4], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 43, "attack": [3, 3, 4, 4], "defense": ["Barrel Roll", "5 FP Attack"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 44, "attack": [2, 2, 3, 3], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 45, "attack": [2, 3, 4, 5], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "0 hits", "jam": "Yes"},
+			{"number": 46, "attack": [4, 5, 5, "5+C"], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 47, "attack": [5, 5, 5, 5], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 48, "attack": [5, 5, "DE", "DE"], "defense": ["Evasive Action", "Enemy Break Off"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 49, "attack": [2, 2, "3+C", "3+C"], "defense": ["Side Loop", "Improve x1"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 50, "attack": ["3+C", 4, 4, 4], "defense": ["Side Loop", "Improve x1"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 51, "attack": [3, 4, 4, 4], "defense": ["Side Loop", "Improve x1"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 52, "attack": [4, 4, 4, 4], "defense": ["Side Loop", "Improve x1"], "defensive fire": "1 hit", "jam": "No"},
+			{"number": 53, "attack": [2, 3, 4, 5], "defense": ["Barrel Roll", "Enemy Break Off"], "defensive fire": "1 hit", "jam": "Yes"},
+			{"number": 54, "attack": ["1+C", 3, 4, "5+C"], "defense": ["Side Loop", "Improve x1"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 55, "attack": [4, 4, 5, "4+C"], "defense": ["Side Loop", "Improve x1"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 56, "attack": [4, 4, 4, "4+C"], "defense": ["Evasive Action", "5 FP Attack"], "defensive fire": "3 hits", "jam": "No"},
+			{"number": 57, "attack": [4, 4, 4, 4], "defense": ["Bad Move", "Improve x2"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 58, "attack": [4, 4, 4, 4], "defense": ["Bad Move", "Improve x2"], "defensive fire": "2 hits", "jam": "No"},
+			{"number": 59, "attack": [3, 4, 4, "4+C"], "defense": ["Bad Move", "Improve x2"], "defensive fire": "0 hits", "jam": "No"},
+			{"number": 60, "attack": [0, 4, 4, "4+C"], "defense": ["Bad Move", "Improve x2"], "defensive fire": "3 hits", "jam": "No"},
 		]
 		shuffle(deck)
 		const experienceLevelEarly = ["Green -1 random hit", "Trained", "Trained", "Trained", "Veteran +1 random hit", "Ace +1 random hit, +1 initiative roll"]
@@ -82,17 +131,17 @@
 			if (rear === "Yes") {
 				if (position === "Tailing" || position === "Advantaged") {
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}, <b>Rear Gunner</b> &#127136; ${rearCard["number"]}, &#9055; <span style="color:red">${rearCard["defensive fire"][0]}</span>
-				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 			}
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, &#9055; <span style="color:red">${enemyHits}</span>
-						<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+						<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 			}
 			if (position === "Tailing" || position === "Advantaged") {
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}
-				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 			}
 			return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, &#9055; <span style="color:red">${enemyHits}</span>
-					<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, ${playerCard["defense"][1]}.`
+					<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 		}
 		function shuffle(array) {
 		  let currentIndex = array.length,  randomIndex;
@@ -163,7 +212,7 @@
 		  return possibleResults[0];
 		}
 	</script>
-	<h1>Encounter Rolls</h1>
+	<h3>Encounter Rolls</h3>
 	<h5>Card number &#127136; Hits &#9055;</h5>
 	<button  class="btn btn-primary mt-2" type="button"
 	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelEarly)">
