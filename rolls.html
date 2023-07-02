@@ -76,8 +76,8 @@
 			{"number": 60, "attack": [0, 4, 4, "4+C"], "defense": ["Bad Move", "Improve x2"], "defensive fire": "3 hits", "jam": "No"},
 		]
 		shuffle(deck)
-		const experienceLevelEarly = ["Green -1 random hit", "Trained", "Trained", "Trained", "Veteran, manually add +1 random hit", "Ace, manually add +1 random hit, +1 initiative roll"]
-		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran, manually add +1 random hit", "Veteran, manually add +1 random hit", "Ace, manually add +1 random hit, +1 initiative roll"]
+		const experienceLevelEarly = ["Green , manually subtract 1 random hit if at least 1 hit", "Trained", "Trained", "Trained", "Veteran, manually add 1 random hit if at least 1 hit", "Ace, manually add 1 random hit if at least 1 hit, +1 initiative roll"]
+		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran, manually add 1 random hit if at least 1 hit", "Veteran, manually add 1 random hit if at least 1 hit", "Ace, manually add 1 random hit if at least 1 hit, +1 initiative roll"]
 		let enemyExperience
 		function generateExperience(experienceArray) {
 			enemyExperience = experienceArray[Math.floor(Math.random() * experienceArray.length)]
