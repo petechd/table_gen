@@ -76,8 +76,8 @@
 			{"number": 60, "attack": [0, 4, 4, "4+C"], "defense": ["Bad Move", "Improve x2"], "defensive fire": "3 hits", "jam": "No"},
 		]
 		shuffle(deck)
-		const experienceLevelEarly = ["Green -1 random hit", "Trained", "Trained", "Trained", "Veteran +1 random hit", "Ace +1 random hit, +1 initiative roll"]
-		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran", "Veteran +1 random hit", "Ace +1 random hit, +1 initiative roll"]
+		const experienceLevelEarly = ["Green -1 random hit", "Trained", "Trained", "Trained", "Veteran, manually add +1 random hit", "Ace, manually add +1 random hit, +1 initiative roll"]
+		const experienceLevelLate = ["Trained", "Trained", "Trained", "Veteran, manually add +1 random hit", "Veteran, manually add +1 random hit", "Ace, manually add +1 random hit, +1 initiative roll"]
 		let enemyExperience
 		function generateExperience(experienceArray) {
 			enemyExperience = experienceArray[Math.floor(Math.random() * experienceArray.length)]
@@ -92,6 +92,8 @@
 			let position = positionValue.options[positionValue.selectedIndex].value;
 			let rearValue = document.getElementById("rear-gunner");
 			let rear = rearValue.options[rearValue.selectedIndex].value;
+			let twoSeaterValue = document.getElementById("rear-gunner");
+			let twoSeater = twoSeaterValue.options[twoSeaterValue.selectedIndex].value;
 			let playerCard = deck[0]
 			let enemyCard = deck[1]
 			let rearCard = deck[2]
@@ -128,6 +130,32 @@
 				playerHits = (parseInt(playerArray[0]) + playerBonus).toString() + " + C"
 			}
 			console.log(position)
+			if (twoSeater === "Yes") {
+				if (position === "Tailed") {
+						return `Enemy 2-seater disengaged`
+					}
+				if (position === "Disadvantaged") {
+						let diceRoll = Math.floor(Math.random() * 6) + 1;
+						if (diceRoll <= 4) {
+							return `${diceRoll} Enemy 2-seater disengaged`
+						}
+						else {
+							return `${diceRoll} Enemy 2-seater failed disengaging, player gains one position`
+						}
+
+					}
+				if (rear === "Yes") {
+					if (position === "Tailing" || position === "Advantaged") {
+					return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}, <b>Rear Gunner</b> &#127136; ${rearCard["number"]}, &#9055; <span style="color:red">${rearCard["defensive fire"][0]}</span>
+					<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
+				}
+					return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}
+							<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
+				}
+
+					return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}
+					<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
+			}
 			if (rear === "Yes") {
 				if (position === "Tailing" || position === "Advantaged") {
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}, <b>Rear Gunner</b> &#127136; ${rearCard["number"]}, &#9055; <span style="color:red">${rearCard["defensive fire"][0]}</span>
@@ -216,26 +244,26 @@
 	<h5>Card number &#127136; Hits &#9055;</h5>
 	<button  class="btn btn-primary mt-2" type="button"
 	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelEarly)">
-	Enemy exp. 09.1916 - 12.1917</button>
+	Enemy exp. 1916/1917</button>
 	<button  class="btn btn-primary mt-2" type="button"
 	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelLate)">
-	Enemy exp. 01.1918 - 10.1918</button>
+	Enemy exp. 1918</button>
 	<div class="dropdown mt-2">
-		<label for="enemy-firepower">Enemy firepower </label>
+		<label for="enemy-firepower">Enemy FP</label>
 		<select id="enemy-firepower">
-		  <option value="0" selected="selected">2</option>
+		  <option value="0">2</option>
 		  <option value="1">3</option>
 		  <option value="2">4</option>
-			<option value="3">5</option>
+			<option value="3" selected="selected">5</option>
 		</select>
-		<label for="player-firepower">Player firepower </label>
+		<label for="player-firepower">Player FP</label>
 		<select id="player-firepower">
 		  <option value="0" selected="selected">2</option>
 		  <option value="1">3</option>
 		  <option value="2">4</option>
-			<option value="3">5</option>
+			<option value="3" selected="selected">5</option>
 		</select>
-		<label for="player-position">Player position </label>
+		<label for="player-position">Player Pos</label>
 		<select id="player-position">
 		  <option value="Tailing">Tailing</option>
 		  <option value="Advantaged">Advantaged</option>
@@ -243,8 +271,13 @@
 			<option value="Disadvantaged">Disadvantaged</option>
 			<option value="Being Tailed">Being Tailed</option>
 		</select>
-		<label for="rear-gunner">Enemy Rear Gunner </label>
+		<label for="rear-gunner">Enemy R. Gunner</label>
 		<select id="rear-gunner">
+		  <option value="No" selected="selected">No</option>
+		  <option value="Yes">Yes</option>
+		</select>
+		<label for="two-seater">Enemy 2-Seat.</label>
+		<select id="two-seater">
 		  <option value="No" selected="selected">No</option>
 		  <option value="Yes">Yes</option>
 		</select>
