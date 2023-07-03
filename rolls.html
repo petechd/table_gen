@@ -131,10 +131,10 @@
 			}
 			console.log(position)
 			if (twoSeater === "Yes") {
-				if (position === "Tailed") {
+				if (position === "Being Tailed") {
 						return `Enemy 2-seater disengaged`
 					}
-				if (position === "Disadvantaged") {
+				else if (position === "Disadvantaged") {
 						let diceRoll = Math.floor(Math.random() * 6) + 1;
 						if (diceRoll <= 4) {
 							return `${diceRoll} Enemy 2-seater disengaged`
@@ -164,7 +164,7 @@
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, &#9055; <span style="color:red">${enemyHits}</span>
 						<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 			}
-			if (position === "Tailing" || position === "Advantaged") {
+			else if (position === "Tailing" || position === "Advantaged") {
 				return `<b>Enemy</b>: &#127136; ${enemyCard["number"]}, Defense: ${enemyCard["defense"][0]}
 				<b>Player</b>: &#127136; ${playerCard["number"]}, &#9055; <span style="color:red">${playerHits}</span>, Defense: ${playerCard["defense"][0]}, Wingman: ${playerCard["defense"][1]}, Jam: ${playerCard["jam"]}.`
 			}
