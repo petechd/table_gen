@@ -185,17 +185,16 @@
 		function generateHits() {
 			let numberOfHits = document.getElementById("number-of-hits");
 			let numberOfHitsValue = numberOfHits.options[numberOfHits.selectedIndex].value;
-			let possibleResults = ["<span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Crew Injury</span>",
+			let possibleResults = ["Crew Injury",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:palegoldenrod'>Port Strut</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:darkkhaki'>Stbd. Strut</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:lightgray; background-color:darkgreen'>Lndg. Gear</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:midnightblue; background-color:steelblue'>Fuel Tank</span>",
+				"Fuel Tank",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:lightgray; background-color:darkgreen'>Lndg. Gear</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:lightsalmon; background-color:firebrick'>Engine</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:palegoldenrod'>Port Strut</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:lightsalmon; background-color:firebrick'>Engine</span>",
+				"Engine",
+				"Engine",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:black; background-color:lightsteelblue'>Tail</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
@@ -220,19 +219,60 @@
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:white; background-color:darkslategrey'>Fwd. Wpns.</span>",
 				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:darkslategray; background-color:burlywood'>Canvas</span>",
-				"<span class='my-1 px-2 py-1' style='border-radius:5px;color:midnightblue; background-color:steelblue'>Fuel Tank</span>"]
+				"Fuel Tank"]
 			let sentence = ""
 			console.log(parseInt(numberOfHitsValue))
 			for (i=0; i < parseInt(numberOfHitsValue); i++) {
 				shuffle(possibleResults)
-				if (sentence.length === 0) {
-					sentence += possibleResults[0]
+				if (possibleResults[0] === "Crew Injury") {
+					let crewmanArray = ["Pilot", "Pilot", "Pilot", "Pilot", "Pilot", "Pilot", "Observer", "Observer", "Observer", "Observer", "Observer"]
+					shuffle(crewmanArray)
+					let injuryArray = ["SW", "SW", "LW", "LW", "LW", "KIA"]
+					shuffle(injuryArray)
+					if (crewmanArray[0] === "Pilot" && injuryArray[0] === "LW") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Pilot LW</span>"
+					}
+					else if (crewmanArray[0] === "Pilot" && injuryArray[0] === "SW") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Pilot SW</span>"
+					}
+					else if (crewmanArray[0] === "Pilot" && injuryArray[0] === "KIA") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Pilot KIA</span>"
+					}
+					if (crewmanArray[0] === "Observer" && injuryArray[0] === "LW") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Observer LW</span>"
+					}
+					else if (crewmanArray[0] === "Observer" && injuryArray[0] === "SW") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Observer SW</span>"
+					}
+					else if (crewmanArray[0] === "Observer" && injuryArray[0] === "KIA") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:whitesmoke; background-color:darkred'>Observer KIA</span>"
+					}
+				}
+				else if (possibleResults[0] === "Engine") {
+					let engineArray = ["Fire", "Fire", "None", "None", "None", "None", "None", "None", "None", "None", "None"]
+					shuffle(engineArray)
+					if (engineArray[0] === "Fire") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:lightsalmon; background-color:firebrick'>Engine & Fire</span>"
+					}
+					else {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:lightsalmon; background-color:firebrick'>Engine (No Fire)</span>"
+					}
+				}
+				else if (possibleResults[0] === "Fuel Tank") {
+					let engineArray = ["Fire", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking"]
+					shuffle(engineArray)
+					if (engineArray[0] === "Fire") {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:midnightblue; background-color:steelblue'>Fuel Tank & Fire</span>"
+					}
+					else {
+						sentence += " <span class='my-1 px-2 py-1' style='border-radius:5px;color:midnightblue; background-color:steelblue'>Fuel Tank & Leaking</span>"
+					}
 				}
 				else {
-					sentence += `, ${possibleResults[0]}`
+					sentence += ` ${possibleResults[0]}`
 				}
 			}
-			return `Hits: ${sentence}.`
+			return `Hits: ${sentence}`
 		}
 		function generateBurst() {
 			let possibleResults = ["Target DE (expend 2 ammo)", "+4 hits (expend 2 ammo)", "+3 hits (expend 2 ammo, then 1 weapon jams)", "+2 hits (expend 2 ammo)", "+2 hits (expend 2 ammo, then 1 weapon jams)", "+1 hit (expend 2 ammo)", "+1 hit (expend 2 ammo, then all weapons jams)", "+1 hit (expend 2 ammo, then 1 weapon jams)", "+2 hits (expend 2 ammo)", "+1 hit (expend 2 ammo, then all weapons jams)", "All weapons jam before any damage is done"]
