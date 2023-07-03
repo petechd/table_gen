@@ -10,7 +10,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
-<body class="text-center">
+<body class="text-center" style="background-color: lightgray">
 	<script>
 		let round = 1
 		let deck = [
@@ -280,7 +280,7 @@
 		  return possibleResults[0];
 		}
 	</script>
-	<h3>Encounter Rolls</h3>
+	<h3 class="mt-1">Encounter Rolls</h3>
 	<h5>Card number &#127136; Hits &#9055;</h5>
 	<button  class="btn btn-primary mt-2" type="button"
 	onclick="document.getElementById('experience').innerHTML = generateExperience(experienceLevelEarly)">
