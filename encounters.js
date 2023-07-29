@@ -13,16 +13,19 @@ function generateMission(year) {
         return missionCounter + '. ' + missions[index]
     }
 }
-
+let randomEventSpent = false;
 
 function generateEncounter(year, location) {
     let encounterIndex = Math.floor(Math.random() * 11);
     let orientationIndex = Math.floor(Math.random() * 11);
+    let randomEventsIndex = Math.floor(Math.random() * 11);
     let typeIndex = Math.floor(Math.random() * 11);
     let random = ''
     let orientations = ["Player is Out of the Sun", "Player starts Advantaged", "Player starts Advantaged", "Player starts Advantaged", "Head-on", "Head-on", "Head-on", "Enemy starts Advantaged", "Enemy starts Advantaged", "Enemy starts Advantaged", "Enemy is Out of the Sun"]
-    if (encounterIndex === 10) {
-        random += "Random event or "
+    let randomEvents = ["Out of the Sun!", "Lost Bomber", "Recon", "Pick Any Skill", "Superior Octane Fuel Batch", "Good Luck Charm", "Eyewitness Corroboration of Kill", "Ace Encounter", "Engine Failure", "Recognition by High Command", "Large Formation Encounter"]
+    if (encounterIndex === 10 && randomEventSpent === false) {
+        randomEventSpent = true
+        random += "Random event (" + randomEvents[randomEventsIndex] + ") or "
     }
     let types;
     if (location === 'NML') {
