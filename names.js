@@ -13,30 +13,537 @@ const itFirst = ['Abramo', 'Alessandro', 'Alessio', 'Andrea', 'Antonio', 'Brando
 const itLast = ['Rossi', 'Russo', 'Ferrari', 'Esposito', 'Colombo', 'Bianchi', 'Romano', 'Ricci', 'Gallo', 'Dal', 'Bruno', 'Greco', 'Marino', 'Conti', 'Giordano', 'Rizzo', 'de Luca', 'Costa', 'Mancini', 'Lombardi', 'Barbieri', 'Fontana', 'Moretti', 'Mariani', 'Caruso', 'Galli', 'Ferrara', 'Santoro', 'Rinaldi', 'Longo', 'Villa', 'Sala', 'Leone', 'Martini', 'Dalla', "D'Angelo", 'Bianco', 'Martinelli', 'Gatti', 'Vitale', 'Serra', 'Coppola', 'Gentile', 'Cattaneo', 'Ferri', 'Messina', 'Monti', 'Marchetti', 'Marini', 'Fabbri', 'Ferraro', 'Lombardo', 'Testa', 'de Santis', 'Grasso', 'Parisi', 'Amato', 'de Angelis', 'Pellegrini', 'Riva', 'Grassi', 'Palumbo', 'Conte', 'Morelli', 'Brambilla', 'Sanna', 'Farina', 'Benedetti', 'Pellegrino', 'Valentini', 'Rizzi', 'Franco', 'Caputo', 'Carbone', 'Fiore', 'de Rosa', 'Barone', "D'Amico", 'Mazza', 'Silvestri', 'Martino', 'Bernardi', 'Rossetti', 'Palmieri', 'Giuliani', 'Orlando', 'Piras', 'Locatelli', 'Basile', 'Castelli', 'Pagano', 'Ruggiero', 'Sorrentino', 'Pozzi', 'Romeo', 'Bellini', 'Montanari', 'Fumagalli', 'Poli', 'Rota', 'Negri', 'Vitali', 'Ferrero', 'Milani', 'Costantini', 'di Stefano', 'Ferretti', 'Battaglia', 'Mantovani', "D'Agostino", 'Moro', 'Perrone', 'Fusco', 'Guerra', 'Sartori', 'Donati', 'Basso', 'Piazza', 'de Simone', 'Calabrese', 'Molinari', 'Catalano', 'Pinna', 'Leonardi', 'Meloni', 'Proietti', 'Spinelli', 'Ruggeri', 'Zanetti', 'Bruni', 'Marchi', 'Bassi', 'Ventura', 'Santini', 'Olivieri', 'Giorgi', 'Magnani', 'Melis', 'Carta', 'Motta', 'Pace', 'Grimaldi', 'Marinelli', 'Garofalo', 'Mele', 'Manca', 'Aiello', 'Beretta', 'Monaco', "D'Ambrosio", 'Cavallo', 'Rosso', 'Volpe', 'Trevisan', "D'Alessandro", 'Antonelli', 'Ferro', 'Maggi', 'Orlandi', 'Napolitano', 'Guidi', 'Cirillo', 'Pastore', 'Corti', 'Pepe', 'Rosa', 'Ferrante', 'Tosi', 'Berti', 'Costanzo', 'Baldi', 'Valenti', 'Angelini', 'de Marco', 'Viola', 'Nardi', 'Arena', 'Mancuso', 'Leoni', 'Sacco', 'Grossi', 'Pugliese', 'Landi', 'Grillo', 'Agostini', 'Piccolo', 'Venturi', 'Marchese', 'Ceccarelli', 'Mosca', 'Stella', 'Giannini', 'Bartolini', 'di Marco', 'Gori', 'Serafini', 'Bernardini', 'Spina', 'Mauro', 'Venturini', 'Oliva', 'Bianchini', 'Gagliardi', 'Mori', 'Filippi', 'Izzo', 'Innocenti', 'Albanese', 'Forte', 'Guarino', 'di Pietro', 'Napoli', 'Mura', 'Rosati', 'Borghi', 'Marra', 'Massa', 'Giusti', 'Rubino', 'Palma', 'Baldini', 'Carraro', 'Franchi', 'Bevilacqua', 'Cavallaro', 'Mauri', 'Biondi', 'Rossini', 'Rocca', 'Falcone', 'Pisano', 'Guida', 'Pucci', 'Bonetti', 'Pinto', 'Fazio', 'Mazzoni', 'Grosso', 'Santi', 'di Martino', 'Magni', 'Raimondi', 'Frigerio', 'Palermo', 'Baroni', 'Mariotti', 'Pesce', 'Bucci', 'Gatto', 'Furlan', 'Giovannini', 'Re', "D'Andrea", 'Bosco', 'Parodi', 'Ferrario', 'Romagnoli', 'Brunetti', 'Perego', 'Costantino', 'Manfredi', 'Colucci', 'Marconi', 'Marchesi', 'di Mauro', 'Gargiulo', 'Moroni', 'Pappalardo', 'Casagrande', 'Crippa', 'Lorusso', 'Vinci', 'Antonini', 'Martelli', 'Cocco', 'Capasso', 'Simonetti', 'Sacchi', 'Fiorini', 'Volpi', 'Luciani', 'Rocchi', 'Lanza', 'di Benedetto', 'Ranieri', 'Barbato', 'Leo', 'Vaccaro', 'Ricciardi', 'Berardi', 'Stefani', 'Merlo', 'Carboni', 'Diana', 'Giuliano', 'Genovese', 'Tarantino', 'Tedesco', 'Vacca', 'Boscolo', 'Cipriani', 'di Lorenzo', 'Riccio', 'Belli', 'Bartoli', 'Masi', 'La Rosa', 'Fortunato', 'Falco', 'Toscano', 'Scotti', 'Gentili', 'di Carlo', 'Mattioli', 'Massaro', 'Colella', 'Cosentino', 'Cozzolino', 'Delle', 'Lai', 'Girardi', 'Graziano', 'Borrelli', 'Bertolini', 'Castellani', 'Gasparini', 'Molteni', 'Grandi', 'Puglisi', 'Paolini', 'Corsi', 'Belotti', 'Lazzari', 'Petrucci', 'Spada', 'Granata', 'Pini', 'Iorio', 'Chiesa', 'Nicoletti', 'Bosio', 'Carrara', 'Bertini', 'Belloni', 'Franchini', 'Lorenzi', 'Boni', 'Cortese', 'Cecchini', 'Mazzola', 'Manzoni', 'Vigano', 'Franceschini', 'Fabris', 'Lupo', 'Clemente', 'Morandi', 'Manzo', 'Pisani', 'Righi', 'Zanotti', 'Romani', 'Spano', 'Schiavone', 'Fiori', 'Vitiello', 'Elia', 'Natale', 'Filippini', 'Pieri', 'Cappelli', 'Marotta', 'Pasquali', 'Turco', 'Poggi', 'Paoletti', 'Castaldo', 'Rocco', 'Murgia', 'Maggio', 'Mattei', 'Carminati', 'Ronchi', 'Fantini', 'Graziani', 'Alfano', 'Sabatini', 'Cavalli', 'Capuano', 'Durante', 'Porcu', 'Visentin', 'Fava', 'Cossu', 'Nanni', "D'Onofrio", 'Abate', 'Musso', 'Ferraris', 'Lupi', 'di Maio', 'Grieco', 'Andreoli', 'Federici', 'Cavaliere', 'Tonelli', 'Salvadori', 'Zanini', 'Bono', 'Scognamiglio', 'Nava', 'Casadei', 'Liguori', 'Albano', 'de Martino', 'Piva', 'di Palma', 'Perna', 'Abbate', 'Randazzo', 'Macchi', 'Carli', 'di Girolamo', 'Tedeschi', 'Perini', 'Guglielmi', 'Favaro', 'Miceli', 'Bresciani', 'Daniele', 'Castagna', 'Betti', 'di Giovanni', 'Bini', 'Vecchi', 'Donato', 'Giglio', 'Guerrini', 'Gabrielli', 'Renzi', 'Bertoli', "D'Amato", 'Catania', 'Campana', 'Barbero', 'Festa', 'del Prete', 'Scala', 'Damiani', 'Vecchio', 'Federico', 'Li', 'Adamo', 'Fiorentino', 'Ghezzi', 'Croce', 'di Matteo', 'La Rocca', 'Cappelletti', 'Angeli', 'Torre', 'Gobbi', 'Milano', 'Redaelli', 'Giunta', 'Gambino', 'Capone', 'Zito', 'Annunziata', 'Giuffrida', 'Bonfanti', 'Brunelli', 'Bonanno', 'Casini', 'Cuomo', 'Corradini', 'Porta', 'Palazzo', 'Sanfilippo', 'Galimberti', 'Micheli', 'del Vecchio', 'Casella', 'Gioia', 'Gallina', 'Invernizzi', 'Privitera', 'Bacci', 'Foti', 'Palmisano', 'Piccoli', 'Galbiati', 'Cerutti', 'Castellano', 'Capelli', 'Morini', 'Paolucci', 'Corrado', 'Tomasi', 'Tagliabue', 'di Domenico', 'Usai', 'Zani', 'Maggioni', 'Balducci', 'Mora', 'Bernasconi', 'Zago', 'Corradi', 'Vassallo', 'Trotta', 'Moretto', 'Loi', 'Panico', 'Semeraro', 'Iacono', 'Verde', 'Corsini', 'Buono', 'Alessi', 'Morello', 'Longhi', 'Bellucci', 'Anselmi', 'Fedele', 'Magri', 'Cioffi', 'Mazzei', 'Mercuri', 'Santangelo', 'Fanelli', 'Campagna', 'Bertoni', 'Rapisarda', 'Fossati', 'Masini', 'Carnevale', 'Rossetto', 'Marrone', 'Clerici', 'de Stefano', 'Ippolito', 'de Lucia', 'Manna', 'Botta', 'Panzeri', 'Lenzi', "D'Elia", 'Luongo', 'Sabatino', 'Galasso', 'Pasquini', 'Campanella', 'Grilli', 'Bossi', 'Maffei', 'Stefanelli', 'Gandolfi', 'Piccinini', 'Fasano', 'Siciliano', 'Ciccarelli', 'Ambrosio', 'Cecchi', 'Poletti', 'Corona', 'Savino', 'Cozzi', 'Casati', 'Castiglioni', 'Veronese', 'Spagnolo', 'Lorenzini', 'di Gregorio', 'Bonini', 'Lodi', 'Lamberti', 'Ruggieri', 'Venturelli', 'Casale', 'Marras', 'Peluso', 'Ratti', 'Mari', 'Florio', 'Bergamini', 'Marcon', 'Pacini', "D'Auria", 'Masiero', 'Meroni', 'Macri', 'Colonna', 'Zanon', 'Palladino', 'Marano', 'Vincenzi', 'di Paolo', 'Valsecchi', 'Barbera', 'Carletti', 'Marangoni', 'Paoli', 'Vianello', 'Bove', 'Sasso', 'Cavallini', 'Giudici', 'Pizzi', 'Latini', 'di Bella', 'Vaccari', 'Bressan', 'Nobile', 'Sassi', 'Battista', 'Sarti', 'Cerri', 'de Vita', 'Iannone', 'Morabito', 'Gabriele', 'Repetto', 'Evangelista', 'de Marchi', 'Carlucci', 'Gamba', 'Giacomelli', 'Natali', 'Reale', 'Fadda', 'Bergamaschi', 'Bandini', 'Mazzeo', 'Lentini', 'Valle', 'Simoni', 'Dalle', 'Marchesini', 'Vanni', 'Gennari', 'Crespi', 'Massari', 'Floris', 'Cataldo', 'Montagna', 'Manenti', 'Patti', 'Terranova', 'Casali', 'Scuderi', 'Lazzarini', 'Deiana', 'Contini', 'Bello', 'Bettini', 'Grande', 'Botti', 'di Giacomo', 'Pecoraro', 'Marelli', 'Fioravanti', 'Amoroso', 'Bertelli', 'Mazzoleni', 'Salvati', 'Urso', 'Santucci', 'Dessi', 'Minelli', 'Torrisi', 'Tortora', 'Barbagallo', 'Benvenuti', 'Galati', 'Iodice', 'Santoni', 'Parente', 'Meli', "D'Errico", 'Morra', 'Zambon', 'Cardinali', 'di Pasquale', 'Drago', 'Zaccaria', 'Veronesi', 'Sessa', 'Paris', 'Rigamonti', 'Felici', 'Arrigoni', 'di Francesco', 'Cappello', 'Marin', 'Cimino', 'Facchini', 'Speranza', 'Giordani', 'Benini', 'Petrone', 'Coco', 'Marangon', 'Pizzo', 'Carlini', 'Benetti', 'Ragusa', 'Vella', 'Simeone', 'Curti', 'Biagini', 'Bonelli', "D'Alessio", 'Corso', 'Puddu', 'Milazzo', 'Todaro', 'Sansone', 'Capra', 'Consoli', 'Migliore', 'Gozzi', 'Sannino', 'Bolognesi', 'Franzoni', 'Giorgetti', 'Adami', 'Giacalone', 'Piscopo', 'Calcagno', 'Caselli', 'Calo', 'Giacomini', 'Bongiovanni', 'Valerio', 'Ottaviani', 'Zanoni', 'Perrotta', 'Gregori', 'Barra', 'di Biase', 'Cipolla', 'Guarnieri', 'Mascia', 'Signorini', 'Pala', 'lo Presti', 'Cesari', 'Lisi', 'Campo', 'Calvi', 'Romanelli', 'Radaelli', 'Piscitelli', 'di Gennaro', 'Mereu', 'Pegoraro', 'Mandelli', 'Morrone', 'Curcio', 'Cecere', 'Finocchiaro', 'Mazzone', 'Stabile', 'Sacchetti', 'Paganelli', 'Cristiano', 'Martin', "D'Urso", 'Damiano', 'Mastroianni', 'Errico', 'Cazzaniga', 'Cecconi', "D'anna", 'Merola', 'Longobardi', 'Lucarelli', 'Rosi', 'Raimondo', 'Chianese', 'Marongiu', 'Cardone', 'Monteleone', 'Sciacca', 'Alessandrini', 'Favero', 'Musumeci', 'Lepore', 'Merli', 'Bruschi', 'di Donato', 'Lattanzi', 'Rea', 'Gaspari', 'Valeri', 'Giudice', 'Dominici', 'Mangano', 'Beltrami', 'Banfi', 'Milan', 'Migliaccio', 'Benedetto', 'Viviani', 'Moscatelli', 'Bologna', "D'Amore", 'Battistini', 'Zanni', 'Gandini', 'Mazzanti', 'Signorelli', 'Giannone', 'Saracino', 'Pirozzi', 'Sandri', 'Fiorillo', 'Bertozzi', 'Bonato', 'Fabiani', 'Battisti', 'Gazzola', 'Matteucci', 'Cavalieri', 'Bonomi', 'Cantoni', 'Zampieri', 'Pulvirenti', 'di Nardo', 'Bernini', 'Atzori', 'Gagliano', 'Gargano', 'Pascale', 'Biffi', 'Cassano', 'Manzi', 'Ugolini', 'Bortolotti', 'Molinaro', 'Tommasi', 'Zucca', 'Piana', 'Cherubini', 'Mancinelli', 'Gobbo', 'Mazzotta', 'Papini', 'Piacentini', 'Delfino', 'Pavesi', 'Garau', 'Colangelo', 'di Leo', 'Petrini', 'Boschi', 'Stucchi', 'Delli', 'Marchini', 'Padovani', 'Cimmino', 'Barletta', 'Tagliaferri', 'Somma', 'Mapelli', 'Benassi', 'Spadaro', 'Casiraghi', 'Ceriani', 'Chiari', 'Buzzi', 'di Salvo', 'Fiorentini', 'Marcucci', 'Montanaro', 'Giardina', 'Perin', 'Longoni', 'Maugeri', 'Beltrame', 'Marcelli', 'Vannini', 'di Giorgio', 'Rusconi', 'Paradiso', 'Galante', 'Trapani', 'di Paola', 'Gualtieri', 'Berto', 'Fedeli', 'Martina', 'Gatta', 'Lotti', 'Coccia', 'Baldo', 'Venditti', 'Cortesi', 'Cremonesi', 'Croci', 'Bosi', 'Casula', 'Pesenti', 'Colombi', 'Grazioli', 'Antonucci', 'Cardillo', 'Galletti', 'Ripamonti', 'Sangalli', 'Persico', 'Maione', 'Martucci', 'Canu', 'Vezzoli', 'Chirico', 'Ruocco', 'Castiglione', 'Modica', 'Matera', 'Guido', 'Casu', 'Barberis', 'Guerini', 'Vergani', 'Schiavo', 'Lolli', 'Cascone', 'Calabro', 'Fusi', 'Dini', 'Medici', 'Baraldi', 'Lucchini', 'Ghilardi', 'Luciano', 'Boccia', 'Sechi', 'Bettoni', 'Savio', 'Ciccone', 'Guerrieri', 'Renna', 'del Giudice', 'Pascucci', 'Totaro', 'Balsamo', 'Callegari', 'Foglia', 'Caiazzo', 'de Falco', 'Martella', 'Provenzano', 'Campisi', 'Roma', 'Tomaselli', 'Conforti', 'Fabrizi', 'Sironi', 'Marzano', 'Morganti', 'Francesconi', 'Cocchi', 'Simonelli', 'Maestri', 'Radice', 'Zini', "D'Aniello", 'Bertocchi', 'Tripodi', 'Manni', 'Anelli', 'Ambrosini', 'Lazzaro', 'Vinciguerra', 'Volpato', 'Valli', 'Iuliano', 'Schiavon', 'di Maggio', 'Gherardi', 'Miccoli', 'Lorenzon', 'Bassani', 'Ascione', 'Pintus', 'Senatore', 'Nocera', 'Frasca', 'Amadori', 'Pierini', 'Porro', 'Fois', 'Fantoni', 'Traverso', 'Franceschi', 'Peretti', 'Balzano', 'Sebastiani']
 
 function generateName() {
+    document.getElementById('gunnery').innerHTML = ""
+    document.getElementById('spare_time_activity').innerHTML = ""
+    document.getElementById('landing').innerHTML = ""
+    document.getElementById('flight').innerHTML = ""
+
+
     if (document.getElementById('french').checked) {
-        return `${drawName(frFirst)} ${drawName(frLast)}`
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
+        return `${drawItem(frFirst)} ${drawItem(frLast)}`
     }
     else if(document.getElementById('german').checked) {
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
         const noble = [" ", " ", " von "]
         const drawNoble = noble[Math.floor(Math.random() * noble.length)]
-        return `${drawName(geFirst)}${drawNoble}${drawName(geLast)}`
+        return `${drawItem(geFirst)}${drawNoble}${drawItem(geLast)}`
     }
     else if(document.getElementById('great_britain').checked) {
-        return `${drawName(gbFirst)} ${drawName(gbLast)}`
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
+        return `${drawItem(gbFirst)} ${drawItem(gbLast)}`
     }
     else if(document.getElementById('italy').checked) {
-        return `${drawName(itFirst)} ${drawName(itLast)}`
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
+        return `${drawItem(itFirst)} ${drawItem(itLast)}`
     }
     else if(document.getElementById('united_states').checked) {
-        return `${drawName(usFirst)} ${drawName(usLast)}`
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
+        return `${drawItem(usFirst)} ${drawItem(usLast)}`
     }
     else if(document.getElementById('ireland').checked) {
-        return `${drawName(ieFirst)} ${drawName(ieLast)}`
+        generateGunnery()
+        generateLanding()
+        generateFlight()
+        generateSpareTimeActivity()
+        return `${drawItem(ieFirst)} ${drawItem(ieLast)}`
     }
     return "Select nationality"
 }
 
 
-function drawName(array) {
+function drawItem(array) {
    return array[Math.floor(Math.random() * array.length)]
 }
+
+function generateGunnery() {
+    if (document.getElementById('flight_school').checked) {
+        let deck = [
+            {
+                "number": 1,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 2,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 3,
+                "attack": [4, 4, 5, 5],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 4,
+                "attack": [4, 4, 5, 5],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 5,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 6,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "Yes"
+            },
+            {
+                "number": 7,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "Yes"
+            },
+            {
+                "number": 8,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "1 hit",
+                "jam": "No"
+            },
+            {
+                "number": 9,
+                "attack": [2, 2, "2+C", 3],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 10,
+                "attack": [2, 3, 2, 3],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 11,
+                "attack": ["1+C", 2, 2, 3],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 12,
+                "attack": [1, 1, 2, 3],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "Yes"
+            },
+            {
+                "number": 13,
+                "attack": [0, 0, 1, 2],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 14,
+                "attack": [2, "2+C", 2, "2+C"],
+                "defense": ["Barrel Roll", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 15,
+                "attack": [5, 5, "DE", "DE"],
+                "defense": ["Immelmann", "2 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 16,
+                "attack": [5, 5, "DE", "DE"],
+                "defense": ["Immelmann", "Busy"],
+                "defensive fire": "4 hits",
+                "jam": "No"
+            },
+            {
+                "number": 17,
+                "attack": [2, 2, 3, 3],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 18,
+                "attack": [1, 2, 3, 4],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 19,
+                "attack": [2, 2, 3, 4],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 20,
+                "attack": [2, 2, 4, 4],
+                "defense": ["Tight Turn", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 21,
+                "attack": [4, 5, 5, 5],
+                "defense": ["Immelmann", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 22,
+                "attack": [4, 5, 5, 5],
+                "defense": ["Immelmann", "Busy"],
+                "defensive fire": "4 hits",
+                "jam": "No"
+            },
+            {
+                "number": 23,
+                "attack": [5, 5, 5, 5],
+                "defense": ["Chandelle", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 24,
+                "attack": [5, 5, "DE", "DE"],
+                "defense": ["Chandelle", "Busy"],
+                "defensive fire": "1 hit",
+                "jam": "No"
+            },
+            {
+                "number": 25,
+                "attack": [3, 4, 5, "4+C"],
+                "defense": ["Half Loop", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 26,
+                "attack": [3, 3, 3, 3],
+                "defense": ["Half Loop", "Busy"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 27,
+                "attack": [4, 4, 5, "DE"],
+                "defense": ["Cuban Eight", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 28,
+                "attack": [4, 5, 5, 5],
+                "defense": ["Cuban Eight", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 29,
+                "attack": ["DE", "DE", "DE", "DE"],
+                "defense": ["Split S", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 30,
+                "attack": ["DE", "DE", "DE", "DE"],
+                "defense": ["Split S", "Busy"],
+                "defensive fire": "5 hits",
+                "jam": "No"
+            },
+            {
+                "number": 31,
+                "attack": ["DE", "DE", "DE", "DE"],
+                "defense": ["Cuban Eight", "Busy"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 32,
+                "attack": [3, 4, 5, 5],
+                "defense": ["Cuban Eight", "Busy"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 33,
+                "attack": [3, 4, "5+C", "5+C"],
+                "defense": ["Split S", "4 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 34,
+                "attack": [3, 4, "5+C", "5+C"],
+                "defense": ["Split S", "4 FP Attack"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 35,
+                "attack": [3, 3, 4, 4],
+                "defense": ["Split S", "3 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 36,
+                "attack": [3, 3, 4, "4+C"],
+                "defense": ["Split S", "3 FP Attack"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 37,
+                "attack": [4, 4, 4, "4+C"],
+                "defense": ["Evasive Action", "5 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 38,
+                "attack": [3, 3, 4, 5],
+                "defense": ["Evasive Action", "5 FP Attack"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 39,
+                "attack": [3, 3, 4, 4],
+                "defense": ["Evasive Action", "5 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 40,
+                "attack": [3, 3, 4, 5],
+                "defense": ["Evasive Action", "5 FP Attack"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 41,
+                "attack": [2, 3, 4, 5],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 42,
+                "attack": [2, 3, 4, 4],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 43,
+                "attack": [3, 3, 4, 4],
+                "defense": ["Barrel Roll", "5 FP Attack"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 44,
+                "attack": [2, 2, 3, 3],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 45,
+                "attack": [2, 3, 4, 5],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "0 hits",
+                "jam": "Yes"
+            },
+            {
+                "number": 46,
+                "attack": [4, 5, 5, "5+C"],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 47,
+                "attack": [5, 5, 5, 5],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 48,
+                "attack": [5, 5, "DE", "DE"],
+                "defense": ["Evasive Action", "Enemy Break Off"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 49,
+                "attack": [2, 2, "3+C", "3+C"],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 50,
+                "attack": ["3+C", 4, 4, 4],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 51,
+                "attack": [3, 4, 4, 4],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 52,
+                "attack": [4, 4, 4, 4],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "1 hit",
+                "jam": "No"
+            },
+            {
+                "number": 53,
+                "attack": [2, 3, 4, 5],
+                "defense": ["Barrel Roll", "Enemy Break Off"],
+                "defensive fire": "1 hit",
+                "jam": "Yes"
+            },
+            {
+                "number": 54,
+                "attack": ["1+C", 3, 4, "5+C"],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 55,
+                "attack": [4, 4, 5, "4+C"],
+                "defense": ["Side Loop", "Improve x1"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 56,
+                "attack": [4, 4, 4, "4+C"],
+                "defense": ["Evasive Action", "5 FP Attack"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+            {
+                "number": 57,
+                "attack": [4, 4, 4, 4],
+                "defense": ["Bad Move", "Improve x2"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 58,
+                "attack": [4, 4, 4, 4],
+                "defense": ["Bad Move", "Improve x2"],
+                "defensive fire": "2 hits",
+                "jam": "No"
+            },
+            {
+                "number": 59,
+                "attack": [3, 4, 4, "4+C"],
+                "defense": ["Bad Move", "Improve x2"],
+                "defensive fire": "0 hits",
+                "jam": "No"
+            },
+            {
+                "number": 60,
+                "attack": [0, 4, 4, "4+C"],
+                "defense": ["Bad Move", "Improve x2"],
+                "defensive fire": "3 hits",
+                "jam": "No"
+            },
+        ]
+        shuffle(deck)
+        console.log(deck[0]["attack"][0])
+        console.log(deck[1]["attack"][0])
+        console.log(deck[2]["attack"][0])
+        if (deck[0]["attack"][0] === 5 || deck[1]["attack"][0] === 5 || deck[2]["attack"][0] === 5) {
+            document.getElementById('gunnery').innerHTML = "Gunnery -1"
+        }
+        else if (deck[0]["attack"][0] === 4 || deck[1]["attack"][0] === 4 || deck[2]["attack"][0] === 4) {
+            document.getElementById('gunnery').innerHTML = "Gunnery -1"
+        }
+        else if (deck[0]["attack"][0] == "DE" || deck[1]["attack"][0] == "DE" || deck[2]["attack"][0] == "DE") {
+            document.getElementById('gunnery').innerHTML = "Gunnery -1"
+        }
+    }
+}
+function generateLanding() {
+    if (document.getElementById('flight_school').checked) {
+        let landing_roll = Math.floor(Math.random() * 11 + 2);
+        if (landing_roll + 2 > 12) {
+            document.getElementById('landing').innerHTML = "Landing"
+        }
+
+    }
+}
+
+function generateFlight() {
+    if (document.getElementById('flight_school').checked) {
+            let flight_roll = Math.floor(Math.random() * 11 + 2);
+            if (flight_roll > 8) {
+                document.getElementById('flight').innerHTML = "ACM -1"
+            }
+
+        }
+}
+
+function generateSpareTimeActivity() {
+    if (document.getElementById('spare_time_activities').checked) {
+
+        document.getElementById('spare_time_activity').innerHTML = drawItem(["Extra Physical Training", "Extra Study Time", "Extra Carousing"])
+    }
+}
+
+function shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
