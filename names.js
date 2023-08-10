@@ -579,9 +579,6 @@ function generateSquadronAssignment(nationality) {
         else if (nationality === "fr") {
             document.getElementById('assignment').innerHTML = drawItem(["Escadrille SPA 3 - Somme, September 1916", "Escadrille N 26 - Somme, September 1916", "Escadrille N 15 - Somme, September 1916", "Escadrille N 37 - Somme, September 1916", "Escadrille N 62 - Somme, September 1916", "Escadrille N 69 - Somme, September 1916", "Escadrille N 103 - Somme, September 1916", "Escadrille N 112 - Somme, September 1916", "Escadrille N 12 - Aisne, September 1916", "Escadrille N 38 - Marne, September 1916", "Escadrille N 31 - St. Mihiel, September 1916", "Escadrille N 49 - St. Mihiel, September 1916", "Escadrille N 73 - St. Mihiel, September 1916", "Escadrille N 75 - St. Mihiel, September 1916", "Escadrille N 77 - St. Mihiel, September 1916", "Escadrille N 23 - Verdun, September 1916", "Escadrille N 48 - Verdun, September 1916", "Escadrille N 57 - Verdun, September 1916", "Escadrille N 65 - Verdun, September 1916", "Escadrille N 67 - Verdun, September 1916", "Escadrille N 124 - Verdun, September 1916"])
         }
-        else {
-        document.getElementById('assignment').innerHTML = ""
-    }
 
     }
     else {
