@@ -14,6 +14,8 @@ const itLast = ['Rossi', 'Russo', 'Ferrari', 'Esposito', 'Colombo', 'Bianchi', '
 const atFirst = ['Alexander', 'Alfons', 'Alois', 'Andreas', 'Augustin', 'Egon', 'Eugen', 'Ferdinand', 'Frank', 'Franz', 'Friedrich', 'Georg', 'Godwin', 'Gottfried', 'Heinrich', 'Hermann', 'Hugo', 'Johann', 'Josef', 'Julius', 'Karl', 'Kurt', 'Leopold', 'Ludwig', 'Otto', 'Raoul', 'Roman', 'Rudolf', 'Stefan', 'Wenzel']
 
 
+
+
 function generateName() {
     document.getElementById('gunnery').innerHTML = ""
     document.getElementById('spare_time_activity').innerHTML = ""
@@ -26,6 +28,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("fr")
         return `${drawItem(frFirst)} ${drawItem(frLast)}`
     }
     else if(document.getElementById('german').checked) {
@@ -33,6 +36,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("de")
         const noble = [" ", " ", " von "]
         const drawNoble = noble[Math.floor(Math.random() * noble.length)]
         return `${drawItem(geFirst)}${drawNoble}${drawItem(geLast)}`
@@ -42,6 +46,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("gb")
         return `${drawItem(gbFirst)} ${drawItem(gbLast)}`
     }
     else if(document.getElementById('italy').checked) {
@@ -49,6 +54,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("it")
         return `${drawItem(itFirst)} ${drawItem(itLast)}`
     }
     else if(document.getElementById('united_states').checked) {
@@ -56,6 +62,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("us")
         return `${drawItem(usFirst)} ${drawItem(usLast)}`
     }
     else if(document.getElementById('ireland').checked) {
@@ -63,6 +70,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("gb")
         return `${drawItem(ieFirst)} ${drawItem(ieLast)}`
     }
     else if(document.getElementById('austrian').checked) {
@@ -70,6 +78,7 @@ function generateName() {
         generateLanding()
         generateFlight()
         generateSpareTimeActivity()
+        generateSquadronAssignment("at")
         const noble = [" ", " ", " von "]
         const drawNoble = noble[Math.floor(Math.random() * noble.length)]
         return `${drawItem(atFirst)}${drawNoble}${drawItem(geLast)}`
@@ -545,6 +554,38 @@ function generateSpareTimeActivity() {
     if (document.getElementById('spare_time_activities').checked) {
 
         document.getElementById('spare_time_activity').innerHTML = drawItem(["Extra Physical Training", "Extra Study Time", "Extra Carousing"])
+    }
+}
+
+function generateSquadronAssignment(nationality) {
+
+    if (document.getElementById('squadron_assignment').checked ) {
+
+        if (nationality === "de") {
+            document.getElementById('assignment').innerHTML = drawItem(["Jasta 5 (Prussian) - Verdun, September 1916", "Jasta 2 (Prussian) - Arras, September 1916", "Jasta 3 (Prussian) - Somme, September 1916", "Jasta 4 (Prussian) - Somme, September 1916", "Jasta 6 (Prussian) - Somme, October 1916", "Jasta 7 (Prussian) - Verdun, October 1916", "Jasta 8 (Prussian) - Ypres, October 1916", "Jasta 9 (Prussian) - Marne, October 1916", "Jasta 10 (Prussian) - Arras, October 1916", "Jasta 11 (Prussian) - Arras, October 1916", "Jasta 14 (Prussian) - Aisne, November 1916", "Jasta 15 (Prussian) - Aisne, November 1916", "Jasta 12 (Prussian) - Arras, December 1916"])
+        }
+        else if (nationality === "at") {
+            document.getElementById('assignment').innerHTML = drawItem(["2nd Division - Isonzo, September 1916", "12th Division - Isonzo, September 1916", "16th Division - Isonzo, September 1916", "19th Division - Isonzo, September 1916"])
+        }
+        else if (nationality === "gb") {
+            document.getElementById('assignment').innerHTML = drawItem(["No. 19 Squadron, BE12 - Somme, September 1916", "No. 24 Squadron, DH2 - Somme, September 1916", "No. 29 Squadron, DH2 - Ypres, September 1916", "No. 70 Squadron, Sop1.5 - Ypres, September 1916", "No. 32 Squadron, DH2 - Ypres, September 1916", "No. 40 Squadron, FE8 - Arras, September 1916", "No. 60 Squadron, N17 - Somme, September 1916"])
+        }
+        else if (nationality === "us") {
+            document.getElementById('assignment').innerHTML = drawItem(["103rd Aero Squadron, SVII - Marne, March 1918"])
+        }
+        else if (nationality === "it") {
+            document.getElementById('assignment').innerHTML = drawItem(["70a Squadriglia, N11 - Isonzo, September 1916", "76a Squadriglia, N11 - Isonzo, September 1916", "78a Squadriglia, N11 - Isonzo, September 1916", "77a Squadriglia, N11 - Isonzo, September 1916", "71a Squadriglia, N11 - Trentino, September 1916", "75a Squadriglia, N11 - Trentino, September 1916"])
+        }
+        else if (nationality === "fr") {
+            document.getElementById('assignment').innerHTML = drawItem(["Escadrille SPA 3 - Somme, September 1916", "Escadrille N 26 - Somme, September 1916", "Escadrille N 15 - Somme, September 1916", "Escadrille N 37 - Somme, September 1916", "Escadrille N 62 - Somme, September 1916", "Escadrille N 69 - Somme, September 1916", "Escadrille N 103 - Somme, September 1916", "Escadrille N 112 - Somme, September 1916", "Escadrille N 12 - Aisne, September 1916", "Escadrille N 38 - Marne, September 1916", "Escadrille N 31 - St. Mihiel, September 1916", "Escadrille N 49 - St. Mihiel, September 1916", "Escadrille N 73 - St. Mihiel, September 1916", "Escadrille N 75 - St. Mihiel, September 1916", "Escadrille N 77 - St. Mihiel, September 1916", "Escadrille N 23 - Verdun, September 1916", "Escadrille N 48 - Verdun, September 1916", "Escadrille N 57 - Verdun, September 1916", "Escadrille N 65 - Verdun, September 1916", "Escadrille N 67 - Verdun, September 1916", "Escadrille N 124 - Verdun, September 1916"])
+        }
+        else {
+        document.getElementById('assignment').innerHTML = ""
+    }
+
+    }
+    else {
+        document.getElementById('assignment').innerHTML = ""
     }
 }
 

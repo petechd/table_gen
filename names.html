@@ -11,30 +11,47 @@
 </head>
 <body class="text-center" style="background-color: lightgray">
 <h1 class="mt-4">Pilot Name Generator</h1>
-<p>Please select nationality:</p>
-<input type="radio" id="united_states" name="nation" value="100">
-<label for="united_states">American</label><img class="flag" src="./flags/us.svg" alt="US flag"><br>
-<input type="radio" id="austrian" name="nation" value="100">
-<label for="austrian">Austrian</label><img class="flag" src="./flags/at.svg" alt="AT flag"><br>
-<input type="radio" id="great_britain" name="nation" value="100">
-<label for="great_britain">British</label><img class="flag" src="./flags/gb.svg" alt="GB flag"><br>
-<input type="radio" id="french" name="nation" value="30">
-<label for="french">French</label><img class="flag" src="./flags/fr.svg" alt="FR flag"><br>
-<input type="radio" id="german" name="nation" value="60">
-<label for="german">German</label><img class="flag" src="./flags/de.svg" alt="GE flag"><br>
-<input type="radio" id="ireland" name="nation" value="100">
-<label for="ireland">Irish</label><img class="flag" src="./flags/ie.svg" alt="IE flag"><br>
-<input type="radio" id="italy" name="nation" value="100">
-<label for="italy">Italian</label><img class="flag" src="./flags/it.svg" alt="IT flag"><br>
-<input type="checkbox" id="flight_school" name="school" value="100">
-<label for="flight_school">Generate Flight School</label><br>
-<input type="checkbox" id="spare_time_activities" name="school" value="100">
-<label for="spare_time_activities" class="mb-2">Generate Spare Time Activity</label><br>
-<input type="submit" class="btn btn-dark" value="Generate Name" onclick="document.getElementById('result').innerHTML = generateName()">
-<h4 class="mt-2" id="result"></h4>
-<h5 id="gunnery"></h5>
-<h5 id="flight"></h5>
-<h5 id="landing"></h5>
-<h5 id="spare_time_activity"></h5>
+<div class="container">
+  <div class="row">
+	  <div class="col">
+		<p>Select Nationality:</p>
+		<input type="radio" id="united_states" name="nation" value="100">
+		<label for="united_states">American</label><img class="flag" src="./flags/us.svg" alt="US flag"><br>
+		<input type="radio" id="austrian" name="nation" value="100">
+		<label for="austrian">Austrian</label><img class="flag" src="./flags/at.svg" alt="AT flag"><br>
+		<input type="radio" id="great_britain" name="nation" value="100">
+		<label for="great_britain">British</label><img class="flag" src="./flags/gb.svg" alt="GB flag"><br>
+		<input type="radio" id="french" name="nation" value="30">
+		<label for="french">French</label><img class="flag" src="./flags/fr.svg" alt="FR flag"><br>
+		<input type="radio" id="german" name="nation" value="60">
+		<label for="german">German</label><img class="flag" src="./flags/de.svg" alt="GE flag"><br>
+		<input type="radio" id="ireland" name="nation" value="100">
+		<label for="ireland">Irish</label><img class="flag" src="./flags/ie.svg" alt="IE flag"><br>
+		<input type="radio" id="italy" name="nation" value="100">
+		<label for="italy">Italian</label><img class="flag" src="./flags/it.svg" alt="IT flag"><br>
+		<input type="checkbox" id="flight_school" name="school" value="100">
+		<label for="flight_school">Flight School</label><br>
+		<input type="checkbox" id="spare_time_activities" name="school" value="100">
+		<label for="spare_time_activities">Spare Time Activity</label><br>
+		<input type="checkbox" id="squadron_assignment" name="assignment" value="100">
+		<label for="squadron_assignment" class="mb-2">Squadron</label><br>
+		<input type="submit" class="btn btn-dark" value="Generate Pilot" onclick="document.getElementById('result').innerHTML = generateName()">
+	</div>
+	<div class="col">
+			<div class="card mt-2 mx-auto" style="width: 18rem;">
+			  <img src="./profile/profile_2.png" class="card-img-top" alt="profile picture">
+			  <div class="card-body">
+				<h5 class="card-title" id="result"></h5>
+				<p class="card-text" id="gunnery"></p>
+				  <p class="card-text" id="flight"></p>
+				  <p class="card-text" id="landing"></p>
+				  <p class="card-text" id="spare_time_activity"></p>
+				  <p class="card-text" id="assignment"></p>
+			  </div>
+			</div>
+		</div>
+  </div>
+</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
