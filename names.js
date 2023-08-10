@@ -21,6 +21,7 @@ function generateName() {
     document.getElementById('spare_time_activity').innerHTML = ""
     document.getElementById('landing').innerHTML = ""
     document.getElementById('flight').innerHTML = ""
+    document.getElementById('dob').innerHTML = ""
 
 
     if (document.getElementById('french').checked) {
