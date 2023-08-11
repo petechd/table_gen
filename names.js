@@ -577,7 +577,7 @@ function generateSquadronAssignment(nationality) {
             document.getElementById('assignment').innerHTML = item
         }
         else if (nationality === "us") {
-            item = drawItem(["103rd Aero Squadron, SVII - Marne, March 1918"])
+            item = drawItem(["103d Aero Squadron, SVII - Marne, March 1918", "94th Aero Squadron, N28 - St. Mihiel, April 1918"])
             document.getElementById('assignment').innerHTML = item
         }
         else if (nationality === "it") {
