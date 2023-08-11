@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
 	  <div class="col">
-		<input type="radio" id="united_states" name="nation" value="100">
+		<input type="radio" id="united_states" name="nation" value="100" checked>
 		<label for="united_states">American</label><img class="flag" src="./flags/us.svg" alt="US flag"><br>
 		<input type="radio" id="austrian" name="nation" value="100">
 		<label for="austrian">Austrian</label><img class="flag" src="./flags/at.svg" alt="AT flag"><br>
@@ -28,11 +28,11 @@
 		<label for="ireland">Irish</label><img class="flag" src="./flags/ie.svg" alt="IE flag"><br>
 		<input type="radio" id="italy" name="nation" value="100">
 		<label for="italy">Italian</label><img class="flag" src="./flags/it.svg" alt="IT flag"><br>
-		<input type="checkbox" id="flight_school" name="school" value="100">
+		<input type="checkbox" id="flight_school" name="school" value="100" checked>
 		<label for="flight_school">Flight School</label><br>
-		<input type="checkbox" id="spare_time_activities" name="school" value="100">
+		<input type="checkbox" id="spare_time_activities" name="activities" value="100" checked>
 		<label for="spare_time_activities">Spare Time Activity</label><br>
-		<input type="checkbox" id="squadron_assignment" name="assignment" value="100">
+		<input type="checkbox" id="squadron_assignment" name="assignment" value="100" checked>
 		<label for="squadron_assignment" class="mb-2">Details</label><br>
 		<input type="submit" class="btn btn-primary" value="Generate Pilot" onclick="document.getElementById('result').innerHTML = generateName()">
 	</div>
