@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pilot Name Generator</title>
+	<link rel="stylesheet" href="style.css">
+    <script src="hits.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body class="text-center" style="background-color: lightgray">
+<a href="names.html">Pilot Name</a>
+<a href="hits.html">Hits</a>
+<h1 class="mt-4">Hits Generator</h1>
+<div class="container">
+  <div class="row">
+	  <div class="col">
+		<input type="checkbox" id="c-result" name="c result" value="100">
+		<label for="c-result">+C Result</label><br>
+		<input type="checkbox" id="incendiary" name="incendiary" value="100">
+		<label for="incendiary">Incendiary Ammo</label><br>
+		<input type="submit" class="btn btn-primary mt-2" value="1 Hit" onclick="document.getElementById('result').innerHTML = generateHits(1)">
+          <input type="submit" class="btn btn-primary mt-2" value="2 Hits" onclick="document.getElementById('result').innerHTML = generateHits(2)">
+          <input type="submit" class="btn btn-primary mt-2" value="3 Hits" onclick="document.getElementById('result').innerHTML = generateHits(3)">
+          <input type="submit" class="btn btn-primary mt-2" value="4 Hits" onclick="document.getElementById('result').innerHTML = generateHits(4)">
+          <input type="submit" class="btn btn-primary mt-2" value="5 Hits" onclick="document.getElementById('result').innerHTML = generateHits(5)">
+          <input type="submit" class="btn btn-primary mt-2" value="6 Hits" onclick="document.getElementById('result').innerHTML = generateHits(6)">
+          <input type="submit" class="btn btn-primary mt-2" value="7 Hits" onclick="document.getElementById('result').innerHTML = generateHits(7)">
+          <input type="submit" class="btn btn-primary mt-2" value="8 Hits" onclick="document.getElementById('result').innerHTML = generateHits(8)">
+          <input type="submit" class="btn btn-primary mt-2" value="9 Hits" onclick="document.getElementById('result').innerHTML = generateHits(9)">
+          <input type="submit" class="btn btn-primary mt-2" value="10 Hits" onclick="document.getElementById('result').innerHTML = generateHits(10)">
+	</div>
+  </div><div class="mt-4" id="result"></div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
