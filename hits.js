@@ -60,8 +60,8 @@ function generateDamage() {
         else {
             let number = drawItem([2,3,4,5,6,7,8,9,10,11,12])
             let hit = [undefined, undefined, "Fire (if engine hit)", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Fire (either)"]
-            if (hit[number] === "Fire (either") {
-                div += `<button type="button" class="btn btn-warning">${table[index]} + Engine Fire</button>`
+            if (hit[number] === "Fire (either)") {
+                div += `<button type="button" class="btn btn-danger">${table[index]} + Engine Fire</button>`
             log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll (for engine): ${number}. Resulting damage: ${hit[number]}.</p>`
             }
             else {
@@ -79,7 +79,7 @@ function generateDamage() {
     else if (damageResult === "Engine") {
         let number = drawItem([2,3,4,5,6,7,8,9,10,11,12])
         let hit = [undefined, undefined, "Fire (if engine hit)", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Fire (either)"]
-        if (hit[number] === "Fire (if engine hit)" || hit[number] === "Fire (either") {
+        if (hit[number] === "Fire (if engine hit)" || hit[number] === "Fire (either)") {
             div += `<button type="button" class="btn btn-danger">${table[index]} + Engine Fire</button>`
         log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
         }
