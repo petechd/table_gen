@@ -39,34 +39,34 @@ function generateDamage() {
     let damageResult = table[index]
     if (damageResult === "Stbd. Strut" || damageResult === "Port Strut" || damageResult === "Tail") {
         div += `<button type="button" class="btn btn-warning" style="background-color: moccasin">${table[index]}</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
     else if (damageResult === "Crew Injury") {
         generateInjury()
     }
     else if (damageResult === "Fwd. Wpns." || damageResult === "Rear Guns") {
         div += `<button type="button" class="btn btn-dark" style="background-color: darkslategrey">${table[index]}</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
     else if (damageResult === "Lndg. Gear") {
         div += `<button type="button" class="btn btn-secondary" style="background-color: dimgray">${table[index]}</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
     else if (damageResult === "Fuel Tank") {
         if (document.getElementById('incendiary').checked) {
             div += `<button type="button" class="btn btn-danger">${table[index]} + Engine Fire</button>`
-            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Incendiary ammo: Engine Fire</p>`
+            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}. Incendiary ammo: Engine Fire</p>`
         }
         else {
             let number = drawItem([2,3,4,5,6,7,8,9,10,11,12])
             let hit = [undefined, undefined, "Fire (if engine hit)", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Fire (either)"]
             if (hit[number] === "Fire (either)") {
                 div += `<button type="button" class="btn btn-danger">${table[index]} + Engine Fire</button>`
-            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll (for engine): ${number}. Resulting damage: ${hit[number]}.</p>`
+            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll (for engine): ${number}. Resulting damage: ${hit[number]}.</p>`
             }
             else {
                div += `<button type="button" class="btn btn-info" style="background-color: cadetblue">${table[index]} + Leaking</button>`
-            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
+            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
             }
 
         }
@@ -74,23 +74,23 @@ function generateDamage() {
     }
     else if (damageResult === "Controls") {
         div += `<button type="button" class="btn btn-warning" style="background-color: darkorange">${table[index]}</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
     else if (damageResult === "Engine") {
         let number = drawItem([2,3,4,5,6,7,8,9,10,11,12])
         let hit = [undefined, undefined, "Fire (if engine hit)", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Leaking", "Fire (either)"]
         if (hit[number] === "Fire (if engine hit)" || hit[number] === "Fire (either)") {
             div += `<button type="button" class="btn btn-danger">${table[index]} + Engine Fire</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
         }
         else {
            div += `<button type="button" class="btn btn-info">${table[index]}</button>`
-            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
+            log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}. Fuel Tank roll: ${number}. Resulting damage: ${hit[number]}.</p>`
         }
     }
     else {
         div += `<button type="button" class="btn btn-warning" style="background-color: lightgoldenrodyellow">${table[index]}</button>`
-        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Total number: ${index}. Resulting damage: ${table[index]}.</p>`
+        log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
 
 }
