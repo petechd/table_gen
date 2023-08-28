@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pilot Name Generator</title>
+	<link rel="stylesheet" href="style.css">
+    <script src="landing.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body class="text-center" style="background-color: lightgray">
+<a href="names.html">Pilot Name</a>
+<a href="hits.html">Hits</a>
+<a href="landing.html">Landing</a>
+<h1 class="mt-4">Landing Result</h1>
+<p class="container">
+  <div class="row">
+	  <div class="col">
+        <input type="checkbox" id="skill" name="Landing Skill" value="100">
+		<label for="skill">Landing Skill</label><br>
+		<input type="checkbox" id="not-base" name="Not At Base" value="100">
+		<label for="not-base">Not at Base</label><br>
+		<input type="checkbox" id="controls" name="Controls Damaged" value="100">
+		<label for="controls">Controls Damaged</label><br>
+        <input type="checkbox" id="emergency-landing" name="Emergency Landing" value="100">
+		<label for="emergency-landing">Emergency Landing</label><br>
+        <input type="checkbox" id="pilot-sw" name="Pilot SW" value="100">
+		<label for="pilot-sw">Pilot SW</label><br>
+        <input type="checkbox" id="engine-out" name="Engine Out" value="100">
+		<label for="engine-out">Engine Out</label><br>
+        <input type="checkbox" id="no-mans-land" name="No Man's Land" value="100">
+		<label for="no-mans-land">No Man's Land</label><br>
+        <label for="fatigue">Fatigue:</label>
+
+        <select name="fatigue" id="fatigue">
+          <option value="0">0-5</option>
+          <option value="1">6-17</option>
+          <option value="2">18+</option>
+        </select>
+          <br>
+          <label for="landing-gear">Landing Gear Dmg:</label>
+        <select name="landing-gear" id="landing-gear">
+          <option value="0">0</option>
+          <option value="1">+1</option>
+          <option value="2">+2</option>
+        </select>
+          <br>
+		<input type="submit" class="btn btn-primary mt-2" value="Result" onclick="document.getElementById('result').innerHTML = generateWeather()">
+	</div>
+  </div>
+<p class="mt-4" id="modifiers"></p><p class="mt-4" id="result"></p>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

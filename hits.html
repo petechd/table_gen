@@ -12,6 +12,7 @@
 <body class="text-center" style="background-color: lightgray">
 <a href="names.html">Pilot Name</a>
 <a href="hits.html">Hits</a>
+<a href="landing.html">Landing</a>
 <h1 class="mt-4">Hits Generator</h1>
 <div class="container">
   <div class="row">
@@ -31,7 +32,9 @@
           <input type="submit" class="btn btn-primary mt-2" value="9 Hits" onclick="document.getElementById('result').innerHTML = generateHits(9)">
           <input type="submit" class="btn btn-primary mt-2" value="10 Hits" onclick="document.getElementById('result').innerHTML = generateHits(10)">
 	</div>
-  </div><div class="mt-4" id="result"></div>
+  </div>
+    <div class="mt-4" id="modifiers"></div>
+    <div class="mt-4" id="result"></div>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
