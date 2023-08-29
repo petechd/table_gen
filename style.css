@@ -7,6 +7,12 @@ h1 {
     font-family: gunplay, arial, serif;
 }
 
+
+.plane {
+    width: 25px;
+    margin: 0 4px 0 4px;
+}
+
 .flag {
     width: 20px;
     height: 30px;
