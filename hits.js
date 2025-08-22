@@ -1,19 +1,28 @@
 let log = ""
 let div = ""
 
-
 function generateHits(number) {
     log = ""
     div = ""
-    if (document.getElementById('c-result').checked) {
+    let nonCanvasHit = false
+
+    for (let i = 0; i < number; i++) {
+        console.log("gen damage")
+        let result = generateDamage()
+        if (result !== "Canvas") {
+            nonCanvasHit = true
+        }
+    }
+
+    if (document.getElementById('c-result').checked && nonCanvasHit === false) {
+         log += `<p>No components damage hits rolled so no crew injury.</p>`
+    }
+
+    if (document.getElementById('c-result').checked && nonCanvasHit) {
         generateInjury()
     }
-    for (let i=0; i < number; i++) {
-        console.log("gen damage")
-        generateDamage()
-    }
-    return document.getElementById('result').innerHTML = `${div}<br><br>${log}`
 
+    return document.getElementById('result').innerHTML = `${div}<br><br>${log}`
 }
 
 function generateInjury() {
@@ -92,7 +101,7 @@ function generateDamage() {
         div += `<button type="button" class="btn btn-warning" style="background-color: lightgoldenrodyellow">${table[index]}</button>`
         log += `<p>First roll result: ${ones}. Second roll result: ${tens}. Final roll result: ${index}. Resulting damage: ${table[index]}.</p>`
     }
-
+    return damageResult
 }
 
 function drawItem(array) {
